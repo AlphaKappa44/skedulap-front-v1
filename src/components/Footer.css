@@ -1,0 +1,17 @@
+.footer{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-around;
+    height: 10vh;
+    min-height: 100px;
+    /* border: 1px solid #f0f; */
+    border-top: 3px solid #2e6f7d;
+    /* background-color: #2e6f7d; */
+}
+
+.footer__link{
+    /* color: #2e6f7d; */
+    /* color: #ec642d; */
+    color: #666666
+}
