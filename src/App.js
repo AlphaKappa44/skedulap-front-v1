@@ -2,8 +2,10 @@
 import './App.css';
 import {Routes, Route} from 'react-router-dom';
 import Header from './components/Header';
-import Home from './components/Home';
 import Footer from './components/Footer'
+import Home from './components/Home';
+import Signup from './components/Signup';
+
 
 function App() {
   return (
@@ -17,6 +19,8 @@ function App() {
           {/* <Header className="App-header"/>
           <Home className="App-home"/>
           <Footer className="App-footer"/> */}
+        <Route path="/formulaire_inscription" element={
+        <Signup />} />
         
       </Routes>
 

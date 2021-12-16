@@ -1,0 +1,50 @@
+.sign__up{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    padding: 20px;
+    margin: 0px;
+
+
+}
+
+.inscriptionForm__inputs{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 413px;
+    /* height: fit-content; */
+    padding: 30px;
+    background-color: rgb(46, 111, 125);
+
+}
+
+.inscriptionForm__input {
+    display: flex;
+    padding: 7px;
+    
+
+}
+
+.inscriptionForm__label {
+    display: flex;
+
+    padding: 10px;
+    color: #fff;
+
+}
+
+.sign__up__submit__button{
+    width: 150px;
+    height: 60px;
+    margin: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+
+    background-color: #ec642d;
+    color: white;
+}
