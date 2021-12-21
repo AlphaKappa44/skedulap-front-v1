@@ -1,0 +1,37 @@
+.sign__up__confirmation{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    padding: 20px;
+    margin: 0px;
+}
+
+p {
+    margin: 5px;
+}
+
+.linkto__appointment__button {
+    width: 200px;
+    height: 60px;
+    margin: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+
+    background-color: #ec642d;
+    color: white;
+}
+
+.linkto__profil__button {
+    width: 200px;
+    height: 60px;
+    margin: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+
+    background-color: #ec642d;
+    color: white;
+}

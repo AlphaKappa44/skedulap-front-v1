@@ -5,7 +5,7 @@
     justify-content: space-around;
     /* align-items: center; */
     align-content: space-around;
-    height: 15vh;
+    max-height: 15vh;
     min-height: 100px;
     /* padding-bottom: 10px; */
     margin-bottom: 0px;  
