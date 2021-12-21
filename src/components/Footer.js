@@ -45,7 +45,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
             >
                 LinkedIn
-                </a>
+                </a> <br/>
                 <a
                 className="footer__link"
                 href="https://le-coup-de-main-numerique.org/"

@@ -1,11 +1,12 @@
 .home{
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
     align-content: space-around;
     margin: 0px;
-    height: 70vh;
+    height: 75vh;
     /* border: 1px solid #10f; */
     overflow: hidden;
     
@@ -26,6 +27,7 @@
     font-size: 3rem;
     padding-top: 50px;
     margin-top: 0px;
+    margin-bottom: 0px;
 
 }
 

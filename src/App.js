@@ -4,8 +4,8 @@ import {Routes, Route} from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer'
 import Home from './components/Home';
-import Signup from './components/Signup';
-
+import SignUp from './components/SignUp';
+import SignUpConfirmation from './components/SignUpConfirmation';
 
 function App() {
   return (
@@ -20,8 +20,12 @@ function App() {
           <Home className="App-home"/>
           <Footer className="App-footer"/> */}
         <Route path="/formulaire_inscription" element={
-        <Signup />} />
+        <SignUp />} />
         
+        <Route path="/confirmation_inscription" element={
+        <SignUpConfirmation />} />
+        
+      
       </Routes>
 
       <Footer />
@@ -29,5 +33,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
