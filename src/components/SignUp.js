@@ -1,15 +1,15 @@
 import React from 'react';
-import './Signup.css';
+import './SignUp.css';
 
-const signUp = ({
+const SignUp = ({
     handleSignUpChange,
     handleSignUpSubmit,
     signUpError,
 }) => {
     return (
         <div>
-            <h1>Inscription</h1>
-            <p>
+            <h1 className="title__inscription">Inscription</h1>
+            <p className="p__inscription">
                 Inscrivez-vous pour prendre rendez-vous avec le coup de main numérique:
             </p>
             <div className="sign__up">
@@ -41,4 +41,4 @@ const signUp = ({
     );
 }
 
-export default signUp;
+export default SignUp;

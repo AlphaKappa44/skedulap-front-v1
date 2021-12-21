@@ -1,12 +1,21 @@
 .sign__up{
     display: flex;
+    
     justify-content: center;
     align-items: center;
-    height: 70vh;
-    padding: 20px;
+    max-height: 70vh;
+    padding: 0px 0px 20px 20px;
     margin: 0px;
+    overflow: hidden;
 
+}
 
+.title__inscription {
+    margin-top: 0px;
+}
+
+.p__inscription {
+    margin-bottom: 30px;
 }
 
 .inscriptionForm__inputs{
