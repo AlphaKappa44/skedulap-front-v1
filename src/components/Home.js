@@ -1,8 +1,10 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 import './Home.css';
-// import background_image from './../assets/images/background-image.jpg';
+
 
 const Home = () => {
+
     return (
         <div className="home">
 
@@ -15,11 +17,14 @@ const Home = () => {
                 Inscrivez-vous maintenant ou contactez l'antenne la plus proche de chez vous <br />
             </p>
 
-            <button 
-                className="home__button"
-            >
-                S'INSCRIRE
-            </button>
+            <Link to="/formulaire_inscription">
+                <button 
+                    type="submit"
+                    className="home__button"
+                >
+                    S'INSCRIRE
+                </button>
+            </Link>
 
         </div>
 

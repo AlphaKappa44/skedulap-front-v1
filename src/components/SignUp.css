@@ -48,7 +48,7 @@
 
 .sign__up__submit__button{
     width: 150px;
-    height: 60px;
+    height: 50px;
     margin: 40px;
     padding: 10px;
     border: none;
@@ -56,4 +56,10 @@
 
     background-color: #ec642d;
     color: white;
+}
+
+.sign__up__submit__button:hover {
+    background-color: rgb(236, 100, 45, 0.8);
+    color: white;
+    border: solid 1px #ec642d;
 }

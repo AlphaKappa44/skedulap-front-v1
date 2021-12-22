@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import './SignUpConfirmation.css';
 
 const SignUpConfirmation = () => {
@@ -11,9 +12,9 @@ const SignUpConfirmation = () => {
             <p>Votre identifiant est: cétonmail@lcdmn.org</p>
             
             <button type="submit" className="linkto__appointment__button">PRENDRE RENDEZ-VOUS</button>
-            <a href="#">
+            <Link to="#">
                 <button type="submit" className="linkto__profil__button">VOIR MON PROFIL</button>
-            </a>
+            </Link>
             <div className="sign__up">
 
             </div>

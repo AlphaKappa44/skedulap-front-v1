@@ -30,3 +30,9 @@
     background-color: #2e6f7d;
     color: white;
 }
+
+.header__button:hover {
+    background-color: #2e6f7dcc;
+    color: white;
+    border: solid 1px #2e6f7d;
+}
