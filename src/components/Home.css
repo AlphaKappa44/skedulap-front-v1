@@ -1,5 +1,6 @@
 .home{
     display: flex;
+    flex-grow: 1;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
@@ -25,6 +26,8 @@
     color: white;
     font-size: 3rem;
     padding-top: 50px;
+    margin-top: 0px;
+    margin-bottom: 0px;
 
 }
 
