@@ -1,0 +1,65 @@
+.sign__up{
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    max-height: 70vh;
+    padding: 0px 0px 20px 20px;
+    margin: 0px;
+    overflow: hidden;
+
+}
+
+.title__inscription {
+    margin-top: 0px;
+}
+
+.p__inscription {
+    margin-bottom: 30px;
+}
+
+.inscriptionForm__inputs{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    width: 413px;
+    /* height: fit-content; */
+    padding: 30px;
+    background-color: rgb(46, 111, 125);
+
+}
+
+.inscriptionForm__input {
+    display: flex;
+    padding: 7px;
+    
+
+}
+
+.inscriptionForm__label {
+    display: flex;
+
+    padding: 10px;
+    color: #fff;
+
+}
+
+.sign__up__submit__button{
+    width: 150px;
+    height: 50px;
+    margin: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+
+    background-color: #ec642d;
+    color: white;
+}
+
+.sign__up__submit__button:hover {
+    background-color: rgb(236, 100, 45, 0.8);
+    color: white;
+    border: solid 1px #ec642d;
+}
