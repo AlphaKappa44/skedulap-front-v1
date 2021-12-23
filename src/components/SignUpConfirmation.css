@@ -1,0 +1,49 @@
+.sign__up__confirmation{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    padding: 20px;
+    margin: 0px;
+}
+
+p {
+    margin: 5px;
+}
+
+.linkto__appointment__button {
+    width: 200px;
+    height: 50px;
+    margin: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+
+    background-color: #ec642d;
+    color: white;
+}
+
+.linkto__appointment__button:hover {
+    background-color: rgb(236, 100, 45, 0.8);
+    color: white;
+    border: solid 1px #ec642d;
+}
+
+.linkto__profil__button {
+    width: 200px;
+    height: 50px;
+    margin: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+
+    background-color: #ec642d;
+    color: white;
+}
+
+.linkto__profil__button:hover {
+    background-color: rgb(236, 100, 45, 0.8);
+    color: white;
+    border: solid 1px #ec642d;
+}
