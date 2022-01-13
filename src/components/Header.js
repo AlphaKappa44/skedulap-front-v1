@@ -2,7 +2,7 @@ import React from 'react';
 import './Header.css';
 import logo_LCDMN from './../assets/images/logo_LCDMN.jpg';
 
-const Header = (props) => {
+const Header = (SignUpConfirmation) => {
     return (
         <div className="header">
             <img src={logo_LCDMN}
@@ -10,7 +10,7 @@ const Header = (props) => {
                 alt="logo de le coup de main numérique"
             />
             <button className="header__button">
-                SE CONNECTER
+                 { SignUpConfirmation ? 'SE CONNECTER' : 'SE DECONNECTER' }
             </button>
         </div>
     );
