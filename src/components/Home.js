@@ -3,7 +3,9 @@ import { useNavigate } from "react-router-dom";
 import "./Home.css";
 
 const Home = () => {
+
   const navigation = useNavigate();
+
 
   return (
     <div className="home">
@@ -23,7 +25,9 @@ const Home = () => {
       <button
         type="button"
         className="home__button"
+
         onClick={() => navigation("/formulaire_inscription")}
+
       >
         S'INSCRIRE
       </button>
