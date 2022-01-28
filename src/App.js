@@ -6,6 +6,7 @@ import Footer from './components/Footer'
 import Home from './components/Home';
 import SignUp from './components/SignUp';
 import SignUpConfirmation from './components/SignUpConfirmation';
+import User from './components/User';
 
 function App() {
   return (
@@ -24,6 +25,9 @@ function App() {
         
         <Route path="/confirmation_inscription" element={
         <SignUpConfirmation />} />
+
+        <Route path="/users" element={
+        <User />} />    
         
       
       </Routes>
