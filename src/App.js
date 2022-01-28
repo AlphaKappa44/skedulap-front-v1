@@ -1,5 +1,6 @@
 // import logo from './logo_LCDMN.jpg';
 import './App.css';
+import React from 'react';
 import {Routes, Route} from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer'
@@ -13,6 +14,7 @@ function App() {
     <div className="App">
 
       <Header />
+      <React.StrictMode>
       <Routes>
 
         <Route path="/" element={
@@ -29,9 +31,8 @@ function App() {
         <Route path="/users" element={
         <User />} />    
         
-      
       </Routes>
-
+      </React.StrictMode>
       <Footer />
 
     </div>
