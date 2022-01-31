@@ -6,15 +6,17 @@ import './Profile.css';
 // const baseURL = "http://localhost:8080/users";
 
 const Profile = () => {
+    const today = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
     const [isLoading, setIsLoading] = useState(false);
 
     // const navigation = useNavigate(null);
-    const [email, setEmail] = useState(null);
+    const [email, setEmail] = useState('john.dom@lcdmn.org');
     const [password, setPassword] = useState(null);
     // const [passwordConfirmation, setPasswordConfirmation] = useState(null);
-    const [first_name, setFirstName] = useState(null);
-    const [last_name, setLastName] = useState(null);
+    const [first_name, setFirstName] = useState('John');
+    const [last_name, setLastName] = useState('Dom');
 
     const handleSignUpSubmit = (event) => {
 
@@ -22,7 +24,7 @@ const Profile = () => {
         setIsLoading(true);
 
     //     event.preventDefault();
-        const user = {first_name, last_name, email, password}
+    const user = {first_name, last_name, email, password};
     //     console.log(user);
 
     //     fetch('http://localhost:8080/create-user', {
@@ -43,25 +45,32 @@ const Profile = () => {
     
     return (
         <div className="connexion">
+
+            <h1 className="title__connexion">
+                Votre profil:
+            </h1>
+
             <div className="contact">
         
-                <h1 className="title__connexion">
-                    Votre profil:
-                </h1>
+
                 <p className="p__connexion">
-                    Nom: { first_name }
-                    Prénom: { last_name }
+                    Nom: { first_name } <br />
+                    Prénom: { last_name } <br />
                     Email: { email }
                 </p>
                 <p>
                     Cliquez-ici pour modifier votre email
-                </p>
-        
-                
-            </div>
+                </p>             
+            </div >
+
+            <div className="my__appointments">
                 <h3 className="appointments__title">
-                    Votre procahin rendez-vous:
+                    Votre prochain rendez-vous:
                 </h3>
+                <p className="appointment">
+                    - le {today.toLocaleDateString('fr-FR', options)}
+                    
+                </p>
                 <h3 className="appointments__title">
                     Vos rendez-vous précédents:
                 </h3>
@@ -73,8 +82,6 @@ const Profile = () => {
                         14 Février 2022
                     </li>
                 </ul>
-
-            <div className="my__appointments">
 
             </div>
 
