@@ -1,0 +1,17 @@
+.profile__submit__button{
+    width: 150px;
+    height: 50px;
+    margin: 40px;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+
+    background-color: #ec642d;
+    color: white;
+}
+
+.profile__submit__button:hover {
+    background-color: rgb(236, 100, 45, 0.8);
+    color: white;
+    border: solid 1px #ec642d;
+}

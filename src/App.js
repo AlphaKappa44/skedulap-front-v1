@@ -9,6 +9,7 @@ import SignUp from './components/SignUp';
 import SignUpConfirmation from './components/SignUpConfirmation';
 import User from './components/User';
 import SignIn from './components/SignIn';
+import Profile from './components/Profile';
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
 
         <Route path="/connexion" element={
         <SignIn />} />
+
+        <Route path="/profil" element={
+        <Profile />} />
 
         <Route path="/users" element={
         <User />} />    

@@ -12,7 +12,7 @@ const SignUpConfirmation = () => {
             <p>Votre identifiant est: cétonmail@lcdmn.org</p>
             
             <button type="submit" className="linkto__appointment__button">PRENDRE RENDEZ-VOUS</button>
-            <Link to="#">
+            <Link to="/profil">
                 <button type="submit" className="linkto__profil__button">VOIR MON PROFIL</button>
             </Link>
             <div className="sign__up">
