@@ -8,6 +8,7 @@ import Home from './components/Home';
 import SignUp from './components/SignUp';
 import SignUpConfirmation from './components/SignUpConfirmation';
 import User from './components/User';
+import SignIn from './components/SignIn';
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
         
         <Route path="/confirmation_inscription" element={
         <SignUpConfirmation />} />
+
+        <Route path="/connexion" element={
+        <SignIn />} />
 
         <Route path="/users" element={
         <User />} />    
