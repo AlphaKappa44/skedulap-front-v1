@@ -30,7 +30,7 @@ const SignUp = () => {
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(user)
         }).then(()=> {
-            console.log('The new user was added to the database!')
+            console.log(`The new user ${user.first_name} ${user.last_name}was added to the database!`)
 
             // Here we want the loading state to be false;
             setIsLoading(false);

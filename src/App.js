@@ -19,9 +19,7 @@ function App() {
 
         <Route path="/" element={
         <Home />} />
-          {/* <Header className="App-header"/>
-          <Home className="App-home"/>
-          <Footer className="App-footer"/> */}
+
         <Route path="/formulaire_inscription" element={
         <SignUp />} />
         
