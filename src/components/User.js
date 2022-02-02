@@ -1,33 +1,36 @@
-// import axios from 'axios';
-// import React from 'react';
+import axios from "axios";
+import React from "react";
 
 // const baseURL = "http://localhost:8080/users";
 
-// export default function PostUser() {
-//   const [user, setUser] = React.useState("Johnny");
+// export default function User() {
+//   const [userGet, setUserGet] = React.useState(null);
 
 //   React.useEffect(() => {
 //     axios.get(baseURL).then((response) => {
-//       setUser(response.data);
+//       setUserGet(response.data);
 //       console.log(response.data);
-
 //     });
 //   }, []);
 
-//   if (!user) return null;
+//   if (!userGet) return null;
 
 //   return (
 //     <div>
-//         <h1>Users :</h1>
-//       <h1>{}</h1>
-//         {console.log(user.firstName)}
-//       <p>{user.firstName}</p>
+//       <ul>
+//         {userGet.map(user => {
+//             return (
+//                 <li key={user.id}>
+//                     prénom: {user.first_name} - nom: {user.last_name} - mail: {user.email}
+                    
+
+//                 </li>
+//     )
+//   })}
+// </ul>
 //     </div>
 //   );
 // }
-
-import axios from "axios";
-import React from "react";
 
 const baseURL = "http://localhost:8080/users";
 
@@ -50,8 +53,6 @@ export default function User() {
             return (
                 <li key={user.id}>
                     prénom: {user.first_name} - nom: {user.last_name} - mail: {user.email}
-                    
-
                 </li>
     )
   })}

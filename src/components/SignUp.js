@@ -7,6 +7,8 @@ import './SignUp.css';
 
 const SignUp = () => {
 
+    const [isLoading, setIsLoading] = useState(false);
+
     const navigation = useNavigate(null);
     const [email, setEmail] = useState(null);
     const [password, setPassword] = useState(null);
@@ -15,6 +17,10 @@ const SignUp = () => {
     const [last_name, setLastName] = useState(null);
 
     const handleSignUpSubmit = (event) => {
+
+        // Here we want the loading state to be true;
+        setIsLoading(true);
+
         event.preventDefault();
         const user = {first_name, last_name, email, password, passwordConfirmation}
         console.log(user);
@@ -24,22 +30,14 @@ const SignUp = () => {
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(user)
         }).then(()=> {
-            console.log('The new user was added to the database!')
+            console.log(`The new user ${user.first_name} ${user.last_name}was added to the database!`)
+
+            // Here we want the loading state to be false;
+            setIsLoading(false);
+        }).then(() => {
+            navigation("/confirmation_inscription")
         })
     };
-
-    // console.log('Typing out', user);
-   
-    // const createUser = () => {
-    //     axios.post(baseURL, {
-            
-    //         email: "tonmail.fr",
-    //         password: "pas_de_ouf",
-    //         first_name: "bouba",
-    //         last_name: "olee"
-    //         })
-    // }
-
 
     // const checkPassword = () => {
     //     const password = user.password;
@@ -115,22 +113,35 @@ const SignUp = () => {
                         {/* {signUpError && <p className="signUpError"> {signUpError}</p>} */}
 
                     </div>
-                    <button 
-                        type="submit" 
-                        value="submit"
-                        className="sign__up__submit__button"
-                        onClick={() => {
-                            // checkPassword();
-                            // navigation("/confirmation_inscription");
-                            // alert(`L'utilisateur créé est:  ${user.firstName} ${user.lastName}`);
-                            // createUser();
-                            }
-                    }
+                    {/* <button 
+
+                    //     onClick={() => {
+                    //         // checkPassword();
+                    //         // navigation("/confirmation_inscription");
+                    //         // alert(`L'utilisateur créé est:  ${user.firstName} ${user.lastName}`);
+                    //         // createUser();
+                    //         }
+                    // }
                         
                         // onChange={handleSignUpChange}
                     >
-                        S'INSCRIRE 
-                    </button>
+                        
+                    </button> */}
+
+                    {/* If the loading state is false, show that button*/}
+                    {!isLoading && 
+                    <button
+                        type="submit" 
+                        value="submit"
+                        className="sign__up__submit__button"
+                    >
+                         S'INSCRIRE 
+                    </button>}
+
+                    {/* Here we disable the button as the New User is being created, is loading is true */}
+                    {isLoading && <button disabled>
+                        ENVOI EN COURS ...
+                    </button>}
                 </form>
 
             </div>
