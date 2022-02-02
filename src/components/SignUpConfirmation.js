@@ -8,7 +8,7 @@ const SignUpConfirmation = () => {
 
     // const navigation = useNavigate(null);
     const [email, setEmail] = useState('john.dom@lcdmn.org');
-    const [password, setPassword] = useState(null);
+    // const [password, setPassword] = useState(null);
     // const [passwordConfirmation, setPasswordConfirmation] = useState(null);
     const [first_name, setFirstName] = useState('John');
     const [last_name, setLastName] = useState('Dom');

@@ -1,46 +1,59 @@
 import {useState} from "react";
-// import axios from 'axios';
-// import { useNavigate } from "react-router-dom";
+import axios from 'axios';
+import { useNavigate } from "react-router-dom";
 import './SignIn.css';
 
 // const baseURL = "http://localhost:8080/users";
 
 const SignIn = () => {
 
+    // const { email } = useParams();
+
     const [isLoading, setIsLoading] = useState(false);
+    // const [loggedIn, setLoggedIn] = useState(false);
 
-    // const navigation = useNavigate(null);
+    const navigation = useNavigate(null);
     const [email, setEmail] = useState(null);
+    const [first_name, setFirstName] = useState("utilisateur lambda");
+    const [last_name, setLastName] = useState('User Alpha');
     const [password, setPassword] = useState(null);
-    // const [passwordConfirmation, setPasswordConfirmation] = useState(null);
-    const [first_name, setFirstName] = useState(null);
-    const [last_name, setLastName] = useState(null);
 
-    const handleSignUpSubmit = (event) => {
+    const handleSignInSubmit = (event) => {
 
         // Here we want the loading state to be true;
         setIsLoading(true);
 
-    //     event.preventDefault();
-        const user = {first_name, last_name, email, password}
-    //     console.log(user);
-
-    //     fetch('http://localhost:8080/create-user', {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json'},
-    //         body: JSON.stringify(user)
-    //     }).then(()=> {
-    //         console.log(`The user ${user.first_name} ${user.last_name}exists: connection!`)
-
-    //         // Here we want the loading state to be false;
-    //         setIsLoading(false);
-    //     }).then(() => {
-    //         navigation("/profil:id")
-    //     })
+        event.preventDefault();
+        const user = {email, password, first_name, last_name}
+        console.log(user);
+        
+        axios.get(`http://localhost:8080/user/${email}`, {
+            params: {
+              email: setEmail,
+              password: setPassword,
+              first_name: setFirstName,
+              last_name: setLastName,
+            }
+          }) 
+          .then(function (response) {
+            console.log(response.data);
+            console.log("password: " + password);
+            console.log("response.data: " + response.data.password)
+            console.log(response.data.first_name + " " + response.data.last_name);
+            response.data.first_name = setFirstName
+            response.data.last_name = setLastName
+            if (password !== response.data.password || email !== response.data.email) {
+                console.log("password does not match!!")
+            }
+            response.data.first_name = setFirstName
+            navigation(`/profil/${ response.data.id }`)
+          })
+          .catch(err => {
+            console.log(err.message);
+        })
+ 
     };
 
- 
-    
     return (
         <div>
             
@@ -51,7 +64,7 @@ const SignIn = () => {
             <div className="sign__in">
 
                 <form 
-                    onSubmit={handleSignUpSubmit} 
+                    onSubmit={handleSignInSubmit} 
                     className="connexionForm">
                     <div className="connexionForm__inputs">
 

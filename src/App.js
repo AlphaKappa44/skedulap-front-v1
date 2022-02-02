@@ -31,10 +31,10 @@ function App() {
         <Route path="/connexion" element={
         <SignIn />} />
 
-        <Route path="/profil" element={
+        <Route path="/profil/:id" element={
         <Profile />} />
 
-        <Route path="/users" element={
+        <Route path="/utilisateurs" element={
         <User />} />    
         
       </Routes>

@@ -24,7 +24,7 @@ const Profile = () => {
         setIsLoading(true);
 
     //     event.preventDefault();
-    const user = {first_name, last_name, email, password};
+    const user = {setFirstName, last_name, email, password};
     //     console.log(user);
 
     //     fetch('http://localhost:8080/create-user', {
