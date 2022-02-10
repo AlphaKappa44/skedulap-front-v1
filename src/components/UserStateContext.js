@@ -30,19 +30,19 @@ const UserStateContext = () => {
   return (
     // the Provider gives access to the context to its children
     <UserContext.Provider value={user}>
-      <Page />
+      <LogInText />
     </UserContext.Provider>
   );
   };
 
-const Page = () => {
+const LogInText = () => {
   // access the context value
   const user = useContext(UserContext);
 
   if (user?.login?.username) {
-    return <p>You are logged in as {user?.login.username}</p>;
+    return <p>Vous êtes connectés avec l'identifiant: {user?.login.username}</p>;
   } else {
-    return <p>You are not logged in</p>;
+    return <p>Vous n'êtes pas connecté</p>;
   }
 };
 
