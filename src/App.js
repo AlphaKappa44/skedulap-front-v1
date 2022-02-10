@@ -12,6 +12,7 @@ import SignUpConfirmation from './components/SignUpConfirmation';
 import User from './components/User';
 import SignIn from './components/SignIn';
 import Profile from './components/Profile';
+import UserStateContext from './components/UserStateContext';
 
 function App() {
 
@@ -44,6 +45,7 @@ function App() {
     <div className="App">
 
       <Header />
+	  <UserStateContext />
       <React.StrictMode>
       <Routes>
 
