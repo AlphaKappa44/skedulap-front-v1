@@ -1,44 +1,45 @@
-import {useState} from "react";
+import React, {useState} from "react";
+import { useContext } from "react";
 // import axios from 'axios';
 // import { useNavigate } from "react-router-dom";
 import './Profile.css';
 
+import {  userContext } from "../context/UserContext";
+
+
 // const baseURL = "http://localhost:8080/users";
 
 const Profile = () => {
-    const today = new Date(Date.UTC(2012, 11, 20, 3, 0, 0));
+
+    const { user, setUser } = useContext(userContext);
+    const today = new Date(Date.UTC(2022, 3, 27, 3, 0, 0));
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
     const [isLoading, setIsLoading] = useState(false);
 
     // const navigation = useNavigate(null);
-    const [email, setEmail] = useState('john.dom@lcdmn.org');
-    const [password, setPassword] = useState(null);
+    // const [email, setEmail] = useState('john.dom@lcdmn.org');
+    // const [password, setPassword] = useState(null);
     // const [passwordConfirmation, setPasswordConfirmation] = useState(null);
-    const [first_name, setFirstName] = useState('John');
-    const [last_name, setLastName] = useState('Dom');
+    // const [first_name, setFirstName] = useState('John');
+    // const [last_name, setLastName] = useState('Dom');
 
-    const handleSignUpSubmit = (event) => {
+    //     const user = {
+    //     email: setEmail,
+    //     password: password,
+    //     first_name:first_name,
+    //     last_name: last_name
+    //   };
+
+    const handleSubmit = (event) => {
 
         // Here we want the loading state to be true;
         setIsLoading(true);
 
-    //     event.preventDefault();
-    const user = {setFirstName, last_name, email, password};
-    //     console.log(user);
+        event.preventDefault();
+        // const user = {setFirstName, last_name, email, password};
+        // console.log(user);
 
-    //     fetch('http://localhost:8080/create-user', {
-    //         method: 'POST',
-    //         headers: { 'Content-Type': 'application/json'},
-    //         body: JSON.stringify(user)
-    //     }).then(()=> {
-    //         console.log(`The user ${user.first_name} ${user.last_name}exists: connection!`)
-
-    //         // Here we want the loading state to be false;
-    //         setIsLoading(false);
-    //     }).then(() => {
-    //         navigation("/profil:id")
-    //     })
     };
 
  
@@ -54,9 +55,10 @@ const Profile = () => {
         
 
                 <p className="p__connexion">
-                    Nom: { first_name } <br />
-                    Prénom: { last_name } <br />
-                    Email: { email }
+                    
+                    Nom: { user.first_name } <br />
+                    Prénom: { user.last_name } <br />
+                    Email: { user.email }
                 </p>
                 <p>
                     Cliquez-ici pour modifier votre email
@@ -88,6 +90,7 @@ const Profile = () => {
                 {/* If the loading state is false, show that button*/}
                 {!isLoading && 
                 <button
+                    onSubmit={handleSubmit}
                     type="submit" 
                     value="submit"
                     className="sign__in__submit__button"

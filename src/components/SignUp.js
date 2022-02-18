@@ -54,11 +54,6 @@ const SignUp = () => {
     // };
 
 
-    // const handleSignUpChange = (event) => {
-    //     const name = event.target.name;
-    //     const value = event.target.value;
-    //     setUser({...user, [name]: value});
-    // };
 
     // const signUpError = "un message d'erreur ici";   
     
@@ -138,7 +133,7 @@ const SignUp = () => {
                          S'INSCRIRE 
                     </button>}
 
-                    {/* Here we disable the button as the New User is being created, is loading is true */}
+                    {/* Here we disable the button as the New User is being created, isLoading is true */}
                     {isLoading && <button disabled>
                         ENVOI EN COURS ...
                     </button>}
