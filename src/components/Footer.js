@@ -20,7 +20,7 @@ const Footer = () => {
                 <h1 className="footer__link__title">
                     CONTACT
                 </h1>
-                <p>
+                <div>
                     <p>
                         2 rue de Budapest <br/>
                         44000 Nantes 
@@ -31,7 +31,7 @@ const Footer = () => {
                     <p>
                         contact@le-coup-de-main-numerique.org
                     </p>
-                </p>
+                </div>
             </div>
 
             <div className="footer__links">

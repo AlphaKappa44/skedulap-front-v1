@@ -1,14 +1,16 @@
-import {useState} from "react";
+// import {useState} from "react";
 import { useNavigate } from 'react-router-dom';
 import './Header.css';
-import UserStateContext from './UserStateContext';
+import { useContext } from "react";
+import {  userContext } from "../context/UserContext";
 import logo_LCDMN from './../assets/images/logo_LCDMN.jpg';
 
 const Header = (SignUpConfirmation) => {
 
+    const { user, setUser } = useContext(userContext);
     const navigate = useNavigate();
 
-    const [loggedIn, setLoggedIn] = useState(false);
+    // const [loggedIn, setLoggedIn] = useState(false);
 
     return (
         <div className="header">
@@ -17,13 +19,19 @@ const Header = (SignUpConfirmation) => {
                 className="header__logo"
                 alt="logo de le coup de main numérique"
             />
-
-            <UserStateContext />
+            {(!user.first_name) && 
+            <h3> 
+                Bienvenu sur notre plateforme!
+            </h3>}
+            {user.first_name && 
+            <h3> 
+                Bienvenue {user.first_name + " " + user.last_name + "!"}
+            </h3>}
             
             <button className="header__button"
             onClick= {() => navigate('/connexion') }
             >
-                 { SignUpConfirmation ? 'SE CONNECTER' : 'SE DECONNECTER' }
+                 { user.first_name ? 'SE DECONNECTER' : 'SE CONNECTER' }
             </button>
         </div>
     );
