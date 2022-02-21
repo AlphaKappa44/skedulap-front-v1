@@ -13,6 +13,8 @@ const Profile = () => {
 
     const { user, setUser } = useContext(userContext);
     const today = new Date(Date.UTC(2022, 3, 27, 3, 0, 0));
+    const nextAppointment= new Date(Date.now());
+    console.log(nextAppointment.toLocaleDateString());
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
     const [isLoading, setIsLoading] = useState(false);
@@ -53,6 +55,9 @@ const Profile = () => {
 
             <div className="contact">
         
+                <p>
+                    Nous sommes le {nextAppointment.toLocaleDateString('fr-FR', options)}
+                </p> 
 
                 <p className="p__connexion">
                     
