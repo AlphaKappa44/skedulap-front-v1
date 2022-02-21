@@ -15,14 +15,18 @@ const Header = (SignUpConfirmation) => {
     return (
         <div className="header">
             
-            <img src={logo_LCDMN}
+            <img 
+                src={logo_LCDMN}
                 className="header__logo"
                 alt="logo de le coup de main numérique"
+                onClick= {() => navigate('/') }
             />
+
             {(!user.first_name) && 
             <h3> 
                 Bienvenu sur notre plateforme!
             </h3>}
+
             {user.first_name && 
             <h3> 
                 Bienvenue {user.first_name + " " + user.last_name + "!"}

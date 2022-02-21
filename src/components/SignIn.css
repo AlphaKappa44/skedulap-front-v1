@@ -63,6 +63,7 @@
     background-color: rgb(236, 100, 45, 0.8);
     color: white;
     border: solid 1px #ec642d;
+    cursor:pointer;
 }
 
 .connexion_message__label {

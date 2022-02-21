@@ -1,11 +1,15 @@
 import {useState} from "react";
 // import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { userContext } from "../context/UserContext";
+
 import './SignUp.css';
 
 // const baseURL = "http://localhost:8080/users";
 
 const SignUp = () => {
+    const { user, setUser } = useContext(userContext);
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -23,15 +27,16 @@ const SignUp = () => {
 
         event.preventDefault();
         const user = {first_name, last_name, email, password, passwordConfirmation}
-        console.log(user);
+        console.log(`Je suis dans le handleSignUpSubmit: $${user.first_name} ${user.last_name}`);
 
         fetch('http://localhost:8080/create-user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(user)
         }).then(()=> {
-            console.log(`The new user ${user.first_name} ${user.last_name}was added to the database!`)
-
+            console.log(`The new user ${user.first_name} ${user.last_name} was added to the database!`)
+            setUser(user);
+            console.log(`Je suis dans le .then: ${user.first_name} ${user.last_name}`);
             // Here we want the loading state to be false;
             setIsLoading(false);
         }).then(() => {

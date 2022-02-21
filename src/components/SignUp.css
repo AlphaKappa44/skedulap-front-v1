@@ -1,6 +1,5 @@
 .sign__up{
     display: flex;
-    
     justify-content: center;
     align-items: center;
     max-height: 70vh;
@@ -8,6 +7,11 @@
     margin: 0px;
     overflow: hidden;
 
+}
+
+.sign__up__links {
+    display: flex;
+    flex-direction: column
 }
 
 .title__inscription {
@@ -18,13 +22,18 @@
     margin-bottom: 30px;
 }
 
+/* .inscriptionForm {
+    width: 413px;
+} */
+
 .inscriptionForm__inputs{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
-    width: 408px;
+    width: 472px;
+    box-sizing: border-box;
     /* height: fit-content; */
     padding: 30px;
     background-color: rgb(46, 111, 125);
@@ -62,4 +71,5 @@
     background-color: rgb(236, 100, 45, 0.8);
     color: white;
     border: solid 1px #ec642d;
+    cursor:pointer;
 }
