@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useContext } from "react";
 // import axios from 'axios';
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import './Profile.css';
 
 import {  userContext } from "../context/UserContext";
@@ -11,13 +11,17 @@ import {  userContext } from "../context/UserContext";
 
 const Profile = () => {
 
-    const { user, setUser } = useContext(userContext);
+    const { user,
+        //  setUser 
+        } = useContext(userContext);
     const today = new Date(Date.UTC(2022, 3, 27, 3, 0, 0));
+    const nextAppointment= new Date(Date.now());
+    console.log(nextAppointment.toLocaleDateString());
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
     const [isLoading, setIsLoading] = useState(false);
 
-    // const navigation = useNavigate(null);
+    const navigation = useNavigate(null);
     // const [email, setEmail] = useState('john.dom@lcdmn.org');
     // const [password, setPassword] = useState(null);
     // const [passwordConfirmation, setPasswordConfirmation] = useState(null);
@@ -31,15 +35,14 @@ const Profile = () => {
     //     last_name: last_name
     //   };
 
-    const handleSubmit = (event) => {
+    const handleClick = (event) => {
 
         // Here we want the loading state to be true;
         setIsLoading(true);
-
+        // console.log.event('click', event.data.user);
         event.preventDefault();
         // const user = {setFirstName, last_name, email, password};
-        // console.log(user);
-
+        navigation("/");
     };
 
  
@@ -53,6 +56,9 @@ const Profile = () => {
 
             <div className="contact">
         
+                <p>
+                    Nous sommes le {nextAppointment.toLocaleDateString('fr-FR', options)}
+                </p> 
 
                 <p className="p__connexion">
                     
@@ -87,21 +93,23 @@ const Profile = () => {
 
             </div>
 
-                {/* If the loading state is false, show that button*/}
-                {!isLoading && 
-                <button
-                    onSubmit={handleSubmit}
-                    type="submit" 
-                    value="submit"
-                    className="sign__in__submit__button"
-                >
-                        RETOUR A LA PAGE D'ACCUEIL
-                </button>}
-
-                {/* Here we disable the button as the New User is being created, is loading is true */}
-                {isLoading && <button disabled>
-                    ENVOI EN COURS ...
-                </button>}
+            {/* If the loading state is false, show that button*/}
+            {!isLoading && 
+            <button
+                onClick={handleClick}
+                type="submit" 
+                value="submit"
+                className="sign__in__submit__button"
+                
+            >
+                    RETOUR A LA PAGE D'ACCUEIL
+            </button> }
+                
+            {/* Here we disable the button as the New User is being created, is loading is true */}
+            {isLoading && 
+            <button disabled >
+                ENVOI EN COURS ...
+            </button>}
 
         </div>
     );

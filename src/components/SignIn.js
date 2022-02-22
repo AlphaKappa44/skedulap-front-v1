@@ -44,11 +44,12 @@ const SignIn = () => {
         },
       })
       .then(function (response) {
-        console.log(response.data);
+        
         setUser(response.data); 
-        console.log("password: " + password);
-        console.log("response.data: " + response.data.password);
-        console.log(response.data.first_name + " " + response.data.last_name);
+        console.log(response.data);
+        console.log("password just typed: " + password);
+        console.log(`password from db(response.data):  ${response.data.password}`);
+        console.log(`coresponding to that user: ${response.data.first_name}  ${response.data.last_name}`);
         // response.data.first_name = setFirstName
         // response.data.last_name = setLastName
         if (
@@ -65,7 +66,13 @@ const SignIn = () => {
         navigation(`/profil/${response.data.id}`);
       })
       .catch((err) => {
-        console.log(err.message);
+        
+        if (
+          err 
+        ) {
+          console.log(err.message);
+          navigation("/connexion");
+        }
       });
   };
 
