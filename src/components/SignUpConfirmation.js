@@ -7,7 +7,9 @@ import './SignUpConfirmation.css';
 
 const SignUpConfirmation = () => {
 
-    const { user, setUser } = useContext(userContext);
+    const { user,
+        //  setUser
+         } = useContext(userContext);
    
     return (
         <div className="sign__up__confirmation">

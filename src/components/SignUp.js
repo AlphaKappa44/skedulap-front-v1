@@ -27,7 +27,7 @@ const SignUp = () => {
 
         event.preventDefault();
         const user = {first_name, last_name, email, password, passwordConfirmation}
-        console.log(`Je suis dans le handleSignUpSubmit: $${user.first_name} ${user.last_name}`);
+        console.log(`Je suis dans le handleSignUpSubmit: ${user.first_name} ${user.last_name}`);
 
         fetch('http://localhost:8080/create-user', {
             method: 'POST',
@@ -39,7 +39,26 @@ const SignUp = () => {
             console.log(`Je suis dans le .then: ${user.first_name} ${user.last_name}`);
             // Here we want the loading state to be false;
             setIsLoading(false);
+            if (
+                !user.first_name ||
+                !user.last_name ||
+                !user.email ||
+                !user.password ||
+                !user.passwordConfirmation
+              ) return (
+                <div> 
+                All the fields inside the form need to be filled in !
+                {navigation("/formulaire_inscription")}
+                </div>
+              )
+        })
+        .catch((err) => {
+            console.log(err.message);
         }).then(() => {
+            setUser(user);
+            
+            console.log(user.email);
+            console.log(user.password);
             navigation("/confirmation_inscription")
         })
     };
@@ -127,7 +146,10 @@ const SignUp = () => {
                     >
                         
                     </button> */}
-
+                    { (user.passwordConfirmation ) && 
+                    <p>
+                         Veillez à bien tout remplir!
+                    </p>}
                     {/* If the loading state is false, show that button*/}
                     {!isLoading && 
                     <button
@@ -139,7 +161,11 @@ const SignUp = () => {
                     </button>}
 
                     {/* Here we disable the button as the New User is being created, isLoading is true */}
-                    {isLoading && <button disabled>
+                    {  isLoading
+                        && 
+                    <button 
+                        disabled
+                    >
                         ENVOI EN COURS ...
                     </button>}
                 </form>

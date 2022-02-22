@@ -7,7 +7,9 @@ import logo_LCDMN from './../assets/images/logo_LCDMN.jpg';
 
 const Header = (SignUpConfirmation) => {
 
-    const { user, setUser } = useContext(userContext);
+    const { user, 
+        // setUser 
+    } = useContext(userContext);
     const navigate = useNavigate();
 
     // const [loggedIn, setLoggedIn] = useState(false);
@@ -22,7 +24,7 @@ const Header = (SignUpConfirmation) => {
                 onClick= {() => navigate('/') }
             />
 
-            {(!user.first_name) && 
+            {(!user.first_name || user.first_name === undefined) && 
             <h3> 
                 Bienvenu sur notre plateforme!
             </h3>}
