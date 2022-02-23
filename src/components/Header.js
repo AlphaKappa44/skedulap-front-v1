@@ -31,7 +31,7 @@ const Header = (SignUpConfirmation) => {
 
             {user.first_name && 
             <h3> 
-                Bienvenue {user.first_name + " " + user.last_name + "!"}
+                Bienvenue, {user.last_name + " " + user.first_name + " !"}
             </h3>}
             
             <button className="header__button"

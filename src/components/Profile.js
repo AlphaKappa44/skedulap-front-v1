@@ -14,13 +14,13 @@ const Profile = () => {
     const { user,
         //  setUser 
         } = useContext(userContext);
-    const today = new Date(Date.UTC(2022, 3, 27, 3, 0, 0));
-    const nextAppointment= new Date(Date.now());
-    console.log(nextAppointment.toLocaleDateString());
+    const nextAppointment = new Date(Date.UTC(2022, 3, 27, 3, 0, 0));
+    const today= new Date(Date.now());
     const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
-    const [isLoading, setIsLoading] = useState(false);
+    console.log(`Today is: ${today.toLocaleDateString('fr-FR', options)}`);
 
+    const [isLoading, setIsLoading] = useState(false);
     const navigation = useNavigate(null);
     // const [email, setEmail] = useState('john.dom@lcdmn.org');
     // const [password, setPassword] = useState(null);
@@ -57,7 +57,7 @@ const Profile = () => {
             <div className="contact">
         
                 <p>
-                    Nous sommes le {nextAppointment.toLocaleDateString('fr-FR', options)}
+                    Nous sommes le {today.toLocaleDateString('fr-FR', options)}
                 </p> 
 
                 <p className="p__connexion">
@@ -76,7 +76,7 @@ const Profile = () => {
                     Votre prochain rendez-vous:
                 </h3>
                 <p className="appointment">
-                    - le {today.toLocaleDateString('fr-FR', options)}
+                    - le {nextAppointment.toLocaleDateString('fr-FR', options)}
                     
                 </p>
                 <h3 className="appointments__title">

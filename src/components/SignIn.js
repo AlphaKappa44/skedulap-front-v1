@@ -16,10 +16,10 @@ const SignIn = () => {
   // const [loggedIn, setLoggedIn] = useState(false);
 
   const navigation = useNavigate(null);
-  const [email, setEmail] = useState("Filled in by the user");
+  const [email, setEmail] = useState(null);
   // const [first_name, setFirstName] = useState("No need for user to sign in");
   // const [last_name, setLastName] = useState('No need for user to sign in');
-  const [password, setPassword] = useState("Filled in by the user");
+  const [password, setPassword] = useState(null);
 
   const handleSignInSubmit = (event) => {
     // Here we want the loading state to be true;
@@ -38,7 +38,7 @@ const SignIn = () => {
       .get(`http://localhost:8080/user/${email}`, {
         params: {
           email: setEmail,
-          //   password: setPassword,
+          password: setPassword,
           //   first_name: setFirstName,
           //   last_name: setLastName,
         },
@@ -53,26 +53,56 @@ const SignIn = () => {
         // response.data.first_name = setFirstName
         // response.data.last_name = setLastName
         if (
+          email.length < 8 ) {
+          console.log("1 - Email field cannot be less than 8!")
+          setIsLoading(false);
+          }
+        else if (
+        !password ) {
+        console.log("2 - Password and confirmation fields cannot be empty!")
+        setIsLoading(false);
+        } 
+        else if (
           password !== response.data.password ||
           email !== response.data.email
+          // if jwt = false ?
         ) {
-          console.log("password does not match!!");
-        }
+          console.log("3 - Email or password does not match!!");
+          setIsLoading(false);
+        } else {
         // response.data.first_name = setFirstName
 
         console.log(user.password);
+        console.log(4)
 
 
         navigation(`/profil/${response.data.id}`);
+      }
       })
       .catch((err) => {
-        
+        console.log("catch error")
         if (
           err 
         ) {
-          console.log(err.message);
-          navigation("/connexion");
+          
+          console.log("User not found");
+          console.log(err.stack);
+          setIsLoading(false);
+          // navigation("/connexion");
         }
+        if (
+          !email ) {
+          console.log(7)
+          console.log("Email field cannot be empty!")
+          setIsLoading(false);
+          }
+        if (
+          !password ) {
+          console.log(8)
+          console.log("Password and confirmation fields cannot be empty!")
+          setIsLoading(false);
+        } 
+        
       });
   };
 

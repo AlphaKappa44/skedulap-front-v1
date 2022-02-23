@@ -27,39 +27,50 @@ const SignUp = () => {
 
         event.preventDefault();
         const user = {first_name, last_name, email, password, passwordConfirmation}
-        console.log(`Je suis dans le handleSignUpSubmit: ${user.first_name} ${user.last_name}`);
+        console.log(`handleSignUpSubmit: ${user.first_name} ${user.last_name}`);
 
         fetch('http://localhost:8080/create-user', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify(user)
         }).then(()=> {
-            console.log(`The new user ${user.first_name} ${user.last_name} was added to the database!`)
-            setUser(user);
-            console.log(`Je suis dans le .then: ${user.first_name} ${user.last_name}`);
-            // Here we want the loading state to be false;
-            setIsLoading(false);
             if (
-                !user.first_name ||
-                !user.last_name ||
-                !user.email ||
-                !user.password ||
-                !user.passwordConfirmation
-              ) return (
-                <div> 
-                All the fields inside the form need to be filled in !
-                {navigation("/formulaire_inscription")}
-                </div>
-              )
-        })
-        .catch((err) => {
-            console.log(err.message);
-        }).then(() => {
+            !user.first_name ||
+            !user.last_name ) {
+            console.log("first_name and last_name need to be filled in!")
+            setIsLoading(false);
+            }
+            else if (
+            !user.email ) {
+            console.log("Email field cannot be empty!")
+            setIsLoading(false);
+            }
+            else if (
+            !user.password ||
+            !user.passwordConfirmation) {
+            console.log("Password and confirmation fields cannot be empty!")
+            setIsLoading(false);
+            } 
+            else if (user.password !== passwordConfirmation)
+              {
+               console.log("Password confirmation and password cannot be different!")
+               setIsLoading(false);
+            } else {
             setUser(user);
+            console.log(`The new user ${user.first_name} ${user.last_name} was added to the database!`)
+            console.log(`Je suis dans le .then: ${user.first_name} ${user.last_name}`);
             
-            console.log(user.email);
-            console.log(user.password);
+            // Here we want the loading state to be false;
             navigation("/confirmation_inscription")
+        }
+
+        }).then(() => {
+            
+            console.log(`Email:  ${user.email}`);
+            console.log(`First name:  ${user.first_name}`);
+            
+        }).catch((err) => {
+            console.log(err.message);
         })
     };
 
