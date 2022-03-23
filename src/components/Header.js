@@ -26,7 +26,7 @@ const Header = (SignUpConfirmation) => {
 
             {(!user.first_name || user.first_name === undefined) && 
             <h3> 
-                Bienvenu sur notre plateforme!
+                Bienvenue sur notre plateforme!
             </h3>}
 
             {user.first_name && 

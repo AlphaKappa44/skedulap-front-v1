@@ -26,58 +26,42 @@ const SignIn = () => {
     setIsLoading(true);
 
     event.preventDefault();
-    // const user = {
-    //   email,
-    //   password,
-    //   first_name,
-    //   last_name
-    // };
-    // console.log(user);
+
+    console.log(user);
 
     axios
-      .get(`http://localhost:8080/user/${email}`, {
-        params: {
-          email: setEmail,
-          password: setPassword,
-          //   first_name: setFirstName,
-          //   last_name: setLastName,
-        },
-      })
+      .post(`http://localhost:8080/user/login`, {
+        email,
+        password
+      //.get(`http://localhost:8080/user/${email}`, {
+        // params: {
+        //   // email: setEmail,
+        //   // password: setPassword,
+        //   email,
+        //   password
+
+        // },
+      }) 
       .then(function (response) {
-        
-        setUser(response.data); 
+       
+        setUser(response.data.user); 
         console.log(response.data);
         console.log("password just typed: " + password);
         console.log(`password from db(response.data):  ${response.data.password}`);
         console.log(`coresponding to that user: ${response.data.first_name}  ${response.data.last_name}`);
         // response.data.first_name = setFirstName
         // response.data.last_name = setLastName
-        if (
-          email.length < 8 ) {
-          console.log("1 - Email field cannot be less than 8!")
-          setIsLoading(false);
-          }
-        else if (
-        !password ) {
-        console.log("2 - Password and confirmation fields cannot be empty!")
-        setIsLoading(false);
-        } 
-        else if (
-          password !== response.data.password ||
-          email !== response.data.email
-          // if jwt = false ?
-        ) {
-          console.log("3 - Email or password does not match!!");
-          setIsLoading(false);
-        } else {
+        
         // response.data.first_name = setFirstName
-
+         
         console.log(user.password);
+        console.log("Réponse du serveur: ")
+        console.log(response.data)
         console.log(4)
+          // if (jwt=true) {setIsAuthentified(true)}
 
-
-        navigation(`/profil/${response.data.id}`);
-      }
+        navigation(`/profil`);
+      
       })
       .catch((err) => {
         console.log("catch error")
@@ -86,6 +70,7 @@ const SignIn = () => {
         ) {
           
           console.log("User not found");
+          console.log(err.response);
           console.log(err.stack);
           setIsLoading(false);
           // navigation("/connexion");
