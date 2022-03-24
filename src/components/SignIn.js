@@ -10,15 +10,11 @@ const SignIn = () => {
 
   const { user, setUser } = useContext(userContext);
 
-  // const { email } = useParams();
-
   const [isLoading, setIsLoading] = useState(false);
-  // const [loggedIn, setLoggedIn] = useState(false);
+  // const [isAuthentified, setIsAuthentified] = useState(false);
 
   const navigation = useNavigate(null);
   const [email, setEmail] = useState(null);
-  // const [first_name, setFirstName] = useState("No need for user to sign in");
-  // const [last_name, setLastName] = useState('No need for user to sign in');
   const [password, setPassword] = useState(null);
 
   const handleSignInSubmit = (event) => {
@@ -33,34 +29,24 @@ const SignIn = () => {
       .post(`http://localhost:8080/user/login`, {
         email,
         password
-      //.get(`http://localhost:8080/user/${email}`, {
-        // params: {
-        //   // email: setEmail,
-        //   // password: setPassword,
-        //   email,
-        //   password
 
-        // },
       }) 
       .then(function (response) {
        
         setUser(response.data.user); 
-        console.log(response.data);
-        console.log("password just typed: " + password);
-        console.log(`password from db(response.data):  ${response.data.password}`);
-        console.log(`coresponding to that user: ${response.data.first_name}  ${response.data.last_name}`);
-        // response.data.first_name = setFirstName
-        // response.data.last_name = setLastName
-        
-        // response.data.first_name = setFirstName
-         
-        console.log(user.password);
-        console.log("Réponse du serveur: ")
-        console.log(response.data)
-        console.log(4)
-          // if (jwt=true) {setIsAuthentified(true)}
+        // console.log(response.data);
+        // console.log("password just typed: " + password);
+        // console.log(`password from db(response.data):  ${response.data.user.password}`);
+        console.log(`coresponding to that user: ${response.data.user.first_name}  ${response.data.user.last_name}`);
 
-        navigation(`/profil`);
+         
+        // console.log(user.password);
+        // console.log("Réponse du serveur: ")
+        // console.log(response.data.user.password)
+        
+        // if (jwt=true) {setIsAuthentified(true)}
+
+        navigation(`/profil/${response.data.user.email}`);
       
       })
       .catch((err) => {
