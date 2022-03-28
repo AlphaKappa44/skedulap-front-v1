@@ -62,12 +62,12 @@ const Profile = () => {
 
                 <p className="p__connexion">
                     
-                    Nom: { user.first_name } <br />
-                    Prénom: { user.last_name } <br />
+                    Prénom: { user.first_name } <br />
+                    Nom: { user.last_name } <br />
                     Email: { user.email }
                 </p>
                 <p>
-                    Cliquez-ici pour modifier votre email
+                    {/* Cliquez-ici pour modifier votre email */}
                 </p>             
             </div >
 

@@ -10,15 +10,11 @@ const SignIn = () => {
 
   const { user, setUser } = useContext(userContext);
 
-  // const { email } = useParams();
-
   const [isLoading, setIsLoading] = useState(false);
-  // const [loggedIn, setLoggedIn] = useState(false);
+  // const [isAuthentified, setIsAuthentified] = useState(false);
 
   const navigation = useNavigate(null);
   const [email, setEmail] = useState(null);
-  // const [first_name, setFirstName] = useState("No need for user to sign in");
-  // const [last_name, setLastName] = useState('No need for user to sign in');
   const [password, setPassword] = useState(null);
 
   const handleSignInSubmit = (event) => {
@@ -26,58 +22,32 @@ const SignIn = () => {
     setIsLoading(true);
 
     event.preventDefault();
-    // const user = {
-    //   email,
-    //   password,
-    //   first_name,
-    //   last_name
-    // };
-    // console.log(user);
+
+    console.log(user);
 
     axios
-      .get(`http://localhost:8080/user/${email}`, {
-        params: {
-          email: setEmail,
-          password: setPassword,
-          //   first_name: setFirstName,
-          //   last_name: setLastName,
-        },
-      })
+      .post(`http://localhost:8080/user/login`, {
+        email,
+        password
+
+      }) 
       .then(function (response) {
+       
+        setUser(response.data.user); 
+        // console.log(response.data);
+        // console.log("password just typed: " + password);
+        // console.log(`password from db(response.data):  ${response.data.user.password}`);
+        console.log(`coresponding to that user: ${response.data.user.first_name}  ${response.data.user.last_name}`);
+
+         
+        // console.log(user.password);
+        // console.log("Réponse du serveur: ")
+        // console.log(response.data.user.password)
         
-        setUser(response.data); 
-        console.log(response.data);
-        console.log("password just typed: " + password);
-        console.log(`password from db(response.data):  ${response.data.password}`);
-        console.log(`coresponding to that user: ${response.data.first_name}  ${response.data.last_name}`);
-        // response.data.first_name = setFirstName
-        // response.data.last_name = setLastName
-        if (
-          email.length < 8 ) {
-          console.log("1 - Email field cannot be less than 8!")
-          setIsLoading(false);
-          }
-        else if (
-        !password ) {
-        console.log("2 - Password and confirmation fields cannot be empty!")
-        setIsLoading(false);
-        } 
-        else if (
-          password !== response.data.password ||
-          email !== response.data.email
-          // if jwt = false ?
-        ) {
-          console.log("3 - Email or password does not match!!");
-          setIsLoading(false);
-        } else {
-        // response.data.first_name = setFirstName
+        // if (jwt=true) {setIsAuthentified(true)}
 
-        console.log(user.password);
-        console.log(4)
-
-
-        navigation(`/profil/${response.data.id}`);
-      }
+        navigation(`/profil/${response.data.user.email}`);
+      
       })
       .catch((err) => {
         console.log("catch error")
@@ -86,6 +56,7 @@ const SignIn = () => {
         ) {
           
           console.log("User not found");
+          console.log(err.response);
           console.log(err.stack);
           setIsLoading(false);
           // navigation("/connexion");
