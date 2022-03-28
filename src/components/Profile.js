@@ -42,7 +42,7 @@ const Profile = () => {
         // console.log.event('click', event.data.user);
         event.preventDefault();
         // const user = {setFirstName, last_name, email, password};
-        navigation("/");
+        navigation("/agenda");
     };
 
  
@@ -102,7 +102,7 @@ const Profile = () => {
                 className="sign__in__submit__button"
                 
             >
-                    RETOUR A LA PAGE D'ACCUEIL
+                    PRENDRE RDV
             </button> }
                 
             {/* Here we disable the button as the New User is being created, is loading is true */}

@@ -23,13 +23,13 @@ const SignUpConfirmation = () => {
             </div>
             
             <div className="sign__up__links">
-                <p>🖥️ Veuillez-vous connectez pour continuer:</p>
+                {/* <p>🖥️ Veuillez-vous connectez pour continuer:</p> */}
                 <p>👇   👇🏾  👇🏻</p>
-                <Link to="/connexion">
+                <Link to="/agenda">
                 <button type="submit" className="linkto__appointment__button">PRENDRE RENDEZ-VOUS</button>
                 </Link>
 
-                <Link to="/connexion">
+                <Link to="/profil/:id">
                     <button type="submit" className="linkto__profil__button">VOIR MON PROFIL</button>
                 </Link>
             </div>

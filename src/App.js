@@ -15,6 +15,7 @@ import User from "./components/User";
 import SignIn from "./components/SignIn";
 import Profile from "./components/Profile";
 import AuthRequired from "./AuthRequired";
+import Agenda from "./components/Agenda";
 
 // import UserStateContext from "./components/UserStateContext";
 
@@ -83,6 +84,8 @@ function App() {
 					<Route path="/profil/:id" element={<Profile />} />
 
 					<Route path="/utilisateurs" element={<User />} />
+
+					<Route path="/agenda" element={<Agenda />} />
 				</Routes>
 			</React.StrictMode>
 
