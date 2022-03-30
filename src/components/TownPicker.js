@@ -1,4 +1,6 @@
-import { useState } from "react";
+import axios from "axios";
+import React from "react";
+import { useState, useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
 // import { useContext } from "react";
 // import { userContext } from "../context/UserContext";
@@ -6,41 +8,46 @@ import { useState } from "react";
 // import axios from "axios";
 import "./Agenda.css";
 
+const baseURL = "http://localhost:8080/towns";
+
 const TownPicker = () => {
-  const [place, setPlace] = useState("------ Selectionnez la ville");
-  const [WelfareType, setWelfareType] = useState("------ Selectionnez l'aide souhaitée");
+  const [place, setPlace] = useState(undefined);
+  const [placeList, setPlaceList] = useState([]);
+  const [WelfareType, setWelfareType] = useState(
+    "------ Selectionnez l'aide souhaitée"
+  );
   const [day, setDay] = useState("Lundi");
   const [openingTime, setOpeningTime] = useState("9h");
   const [closingTime, setClosingTime] = useState("12h");
-//   {day} de {opening_time} à {closing_time}
+
+  React.useEffect(() => {
+    axios.get(baseURL).then((response) => {
+      setPlaceList(response.data);
+      console.log(response.data);
+    });
+  }, []);
+
   return (
     <div className="select">
       {/* <p className="p__select">
         Sélectionnez la ville ou vous souhaitez prendre rendez-vous
       </p> */}
 
+
+
       <div className="div__select">
         <label htmlFor="town__select" className="town__select__label">
           Sélectionnez le lieu ou vous souhaitez prendre rendez-vous
         </label>
-        <select
-          onChange={(e) => setPlace(e.target.value)}
-          className="town__select"
-        >
+        <select onChange={(e) => setPlace(e.target.value)} className="town__select">
+         {
+            placeList && placeList.map(place => (
+                <option value= {place.name} key={place.id}>
+                    {place.name}
+                </option>
+             ))
+         }
 
-          <option disabled defaultValue value="default">
-            {place}
-          </option>
-          <option value="Nantes">Nantes Place Mendès France Antenne AXEL</option>
-          <option value="Nantes">Nantes Chantenay EDS</option>
-          <option value="Nantes">Nantes Michelet EDS</option>
-          <option value="Nantes">Nantes Talensac EDS</option>
-          <option value="Nantes">Saint-Mars-Du-Désert Mairie</option>
-          <option value="Nantes">Nantes Breil -ATELIER PARTAGE</option>
-          <option value="Nantes">Sucé-Sur-Erdre</option>
-          <option value="Nantes">Nantes René Cassin EDS</option>
-          <option value="Nantes">Nantes Vincent Gâche AGIRC ARRCO</option>
-          <option value="Nantes">Nantes Dalby-Doulon-Malakoff EDS</option>
         </select>
 
         <p className="p__select">
@@ -55,11 +62,13 @@ const TownPicker = () => {
           onChange={(e) => setWelfareType(e.target.value)}
           className="welfare__select"
         >
-          <option disabled defaultValue value="default"> {WelfareType} </option>
+          <option disabled defaultValue value="default">
+            {" "}
+            {WelfareType}{" "}
+          </option>
           <option value="welfare"> Assistance numériques de base </option>
           <option value="welfare"> Accès aux droits </option>
-          <option selected value="welfare"> Comprendre notre monde connecté </option>
-
+          <option value="welfare"> Comprendre notre monde connecté </option>
         </select>
 
         <label htmlFor="message" className="select_message__label">

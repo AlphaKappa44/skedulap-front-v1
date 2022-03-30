@@ -18,14 +18,15 @@ export default function User() {
   return (
     <div>
       <ul>
-        {userGet.map(user => {
-            return (
-                <li key={user.id}>
-                    prénom: {user.first_name} - nom: {user.last_name} - mail: {user.email}
-                </li>
-    )
-  })}
-</ul>
+        {userGet.map((user) => {
+          return (
+            <li key={user.id}>
+              prénom: {user.first_name} - nom: {user.last_name} - mail:{" "}
+              {user.email}
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
