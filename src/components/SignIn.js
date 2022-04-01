@@ -59,6 +59,8 @@ const SignIn = () => {
           console.log(err.response);
           console.log(err.stack);
           setIsLoading(false);
+
+          
           // navigation("/connexion");
         }
         if (
@@ -75,7 +77,7 @@ const SignIn = () => {
         } 
         
       });
-  };
+  };  
 
   return (
     <div>
@@ -126,7 +128,9 @@ const SignIn = () => {
 
           {/* Here we disable the button as the New User is being created, is loading is true */}
           {isLoading && <button disabled>ENVOI EN COURS ...</button>}
+
         </form>
+      
       </div>
     </div>
   );

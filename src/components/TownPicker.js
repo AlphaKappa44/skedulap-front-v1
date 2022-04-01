@@ -7,22 +7,31 @@ import { useState, useEffect } from "react";
 
 // import axios from "axios";
 import "./Agenda.css";
-
-const baseURL = "http://localhost:8080/towns";
+// <iframe src="https://data.loire-atlantique.fr/explore/embed/dataset/224400028_communes-loire-atlantique-denominations-formegeo-interco/table/?disjunctive.commune_nom&static=false&datasetcard=false" width="400" height="300" frameborder="0"></iframe>
+const permURL = "http://localhost:8080/permanences";
+const supportURL = "http://localhost:8080/supports";
 
 const TownPicker = () => {
-  const [place, setPlace] = useState(undefined);
+  const [place, setPlace] = useState("---Choisir la permanence");
   const [placeList, setPlaceList] = useState([]);
-  const [WelfareType, setWelfareType] = useState(
-    "------ Selectionnez l'aide souhaitée"
-  );
+
+  const [support, setSupport] = useState("--choisir le support");
+  const [supportList, setSupportList] = useState([]);
+
   const [day, setDay] = useState("Lundi");
   const [openingTime, setOpeningTime] = useState("9h");
   const [closingTime, setClosingTime] = useState("12h");
 
   React.useEffect(() => {
-    axios.get(baseURL).then((response) => {
+    axios.get(permURL).then((response) => {
       setPlaceList(response.data);
+      console.log(response.data);
+    });
+  }, []);
+
+  React.useEffect(() => {
+    axios.get(supportURL).then((response) => {
+      setSupportList(response.data);
       console.log(response.data);
     });
   }, []);
@@ -42,8 +51,8 @@ const TownPicker = () => {
         <select onChange={(e) => setPlace(e.target.value)} className="town__select">
          {
             placeList && placeList.map(place => (
-                <option value= {place.name} key={place.id}>
-                    {place.name}
+                <option value= {place.permanence_name} key={place.id}>
+                    {place.permanence_name}
                 </option>
              ))
          }
@@ -59,13 +68,20 @@ const TownPicker = () => {
         </label>
 
         <select
-          onChange={(e) => setWelfareType(e.target.value)}
+          onChange={(e) => setSupport(e.target.value)}
           className="welfare__select"
         >
-          <option disabled defaultValue value="default">
+          <option defaultValue value="default">
             {" "}
-            {WelfareType}{" "}
+            {support}{" "}
           </option>
+          {
+            supportList && supportList.map(support => (
+                <option value= {support.type_support} key={support.id}>
+                    {support.type_support}
+                </option>
+             ))
+         }
           <option value="welfare"> Assistance numériques de base </option>
           <option value="welfare"> Accès aux droits </option>
           <option value="welfare"> Comprendre notre monde connecté </option>

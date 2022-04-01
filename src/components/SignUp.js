@@ -74,22 +74,6 @@ const SignUp = () => {
         })
     };
 
-    // const checkPassword = () => {
-    //     const password = user.password;
-    //     const passwordConfirmation = user.passwordConfirmation;
-    //     if (password !== passwordConfirmation) { 
-    //         alert ('La confirmation de mot de passe est différent du mot de passe - Veuillez entrer un mot de passe et le confirmer');
-    //         console.log(password);
-    //         console.log(passwordConfirmation);
-    //     }
-    //      else {
-    //         console.log(password);
-    //         console.log(passwordConfirmation);
-    //     }
-    // };
-
-
-
     // const signUpError = "un message d'erreur ici";   
     
     return (
@@ -143,20 +127,7 @@ const SignUp = () => {
                         {/* {signUpError && <p className="signUpError"> {signUpError}</p>} */}
 
                     </div>
-                    {/* <button 
 
-                    //     onClick={() => {
-                    //         // checkPassword();
-                    //         // navigation("/confirmation_inscription");
-                    //         // alert(`L'utilisateur créé est:  ${user.firstName} ${user.lastName}`);
-                    //         // createUser();
-                    //         }
-                    // }
-                        
-                        // onChange={handleSignUpChange}
-                    >
-                        
-                    </button> */}
                     { (user.passwordConfirmation ) && 
                     <p>
                          Veillez à bien tout remplir!
